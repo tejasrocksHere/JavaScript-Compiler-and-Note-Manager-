@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Console with CodeMirror and Autocomplete</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- CodeMirror CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/dracula.min.css"
+    />
+    <!-- Dark theme -->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Add-Free Javascript Compiler</h1>
+      <div class="controls">
+        <input type="text" id="noteName" placeholder="Enter note name" />
+        <button onclick="saveCode()">Save Code</button>
+        <button onclick="loadCode()">Load Code</button>
+        <button onclick="showAllNotes()">Show All Notes</button>
+      </div>
+      <div class="theme-selector">
+        <label for="themeSelect">Select Theme:</label>
+        <button
+          id="runCodeButton"
+          onclick="runCode()"
+          title="Run Code (Ctrl+')"
+        >
+          Run Code
+        </button>
+        <select id="themeSelect" onchange="changeTheme()">
+          <option value="dracula">Dracula</option>
+          <option value="eclipse">Eclipse</option>
+        </select>
+      </div>
+      <p>Use Control+Space to auto-generate</p>
+      <div class="editor-console-wrapper">
+        <div class="editor-wrapper">
+          <textarea
+            id="code"
+            placeholder="Type your JavaScript code here..."
+          ></textarea>
+        </div>
+        <div id="console" aria-placeholder="output">
+          <p>Check output Here</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for displaying notes -->
+    <div id="notesModal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">X</button>
+        <h2>Saved Notes</h2>
+        <pre id="notesList"></pre>
+        <button onclick="copyNotes()">Copy Note Names</button>
+      </div>
+    </div>
+    <footer>
+      <p>
+        Created by
+        <strong
+          ><a href="https://tejas-mundhe-projects.netlify.app/"
+            >Tejas Mundhe</a
+          ></strong
+        >, Full Stack Developer.
+        <a
+          href="https://github.com/tejasrocksHere?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub Profile</a
+        >
+      </p>
+    </footer>
+
+    <!-- CodeMirror JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/hint/show-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/hint/javascript-hint.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/addon/hint/show-hint.min.css"
+    />
+    <script src="script.js"></script>
+  </body>
+</html>
